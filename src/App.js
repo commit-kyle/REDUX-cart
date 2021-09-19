@@ -5,7 +5,7 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification';
-import { sendCartData } from './store/cart-actions';
+import { sendCartData, fetchCartData } from './store/cart-actions';
 
 let initialRender = true;
 
@@ -17,13 +17,16 @@ function App() {
 	const notification = useSelector(state => state.ui.notification);
 
 	useEffect(() => {
+		dispatch(fetchCartData());
+	}, [dispatch]);
+
+	useEffect(() => {
 		if (initialRender) {
 			initialRender = false;
 			return;
 		}
 
 		dispatch(sendCartData(cart));
-
 	}, [cart, dispatch]);
 
 	return (
