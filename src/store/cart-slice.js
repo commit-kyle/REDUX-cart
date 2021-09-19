@@ -44,7 +44,7 @@ const cartSlice = createSlice({
 const firebaseURL =
 	'https://redux-cart-b1ac6-default-rtdb.europe-west1.firebasedatabase.app/cart.json';
 
-const sendCartData = cart => {
+export const sendCartData = cart => {
 	return async dispatch => {
 		dispatch(
 			uiActions.showNotification({
